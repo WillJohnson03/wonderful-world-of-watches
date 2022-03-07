@@ -5,14 +5,28 @@
 <body>
   <nav>
     <% if (user) { %>
-      <a href="/auth/logout">
+      <a 
+        href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
+      <a href="/watches/new"
+        <%- title === 'Add Watch' ? 'class="active"' : "" %> 
+      >
+        ADD WATCH</a>
+      <a href="/profiles"
+      >
+        PROFILES</a>
+      <a href="">MY WISHLISTS</a>
+      <a href="">MY WATCHES</a>
     <% } else { %>
-      <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
-          <img id="siwg-image" alt="Sign in with Google" />
-        </button>
+      <a 
+        href="/auth/google" class="siwg-link">
+          <button type="submit" class="siwg">
+            <img id="siwg-image" alt="Sign in with Google" />
+          </button>
       </a>
     <% } %>
+    <a 
+      href="/watches" <%- title === 'All Watches' ? 'class="active"' : "" %> 
+      >ALL WATCHES</a>
   </nav>

@@ -1,15 +1,32 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/public/stylesheets/watches/index.css">
 <%- include('../partials/nav') %>
 
-<section>
-  <h1>Watchs</h1>
-  <ul>
-    <% watches.forEach(watch => { %>
-      <li>
-        <% watch.brand + watch.model %> 
-      </li>
-      <% }) %> 
-  </ul>
-</section>
+<main>
+  <h1><%= title %> </h1>
+  <table id="list">
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% watches.forEach(watch => { %>
+          <tr>
+            <td><%= watch.brand %></td>
+            <td><%= watch.model %> </td>
+            <td><a href="/watches/<%= watch._id %>">DETAILS</a></td>
+            <td>
+              <form action="/watches/<%= watch._id %>?_method=DELETE" method="POST">
+                <button>X</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %> 
+    </tbody>
+  </table>
+</main>
 
 <%- include('../partials/footer') %> 
