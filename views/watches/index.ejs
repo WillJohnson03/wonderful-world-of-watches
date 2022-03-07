@@ -1,0 +1,15 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>Watchs</h1>
+  <ul>
+    <% watches.forEach(watch => { %>
+      <li>
+        <% watch.brand + watch.model %> 
+      </li>
+      <% }) %> 
+  </ul>
+</section>
+
+<%- include('../partials/footer') %> 
