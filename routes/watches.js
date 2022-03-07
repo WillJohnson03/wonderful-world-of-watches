@@ -8,6 +8,8 @@ const router = Router()
 router.get('/', watchesCtrl.index)
 // GET - localhost/3000/watches/new
 router.get('/new', isLoggedIn, watchesCtrl.new)
+// GET - localhost/3000/watches/:id
+router.get('/:id', watchesCtrl.show)
 
 // POST - localhost/3000/watches
 router.post('/', isLoggedIn, watchesCtrl.create)

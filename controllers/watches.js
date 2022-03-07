@@ -31,8 +31,22 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Watch.findById(req.params.id)
+  .then(watch => {
+    res.render('watches/show', {
+      watch,
+      title: 'Watch Details'
+    })
+  })
+  .catch(err => {
+    console.log('Show Error', err)
+  })
+}
+
 export {
   index,
   newWatch as new,
   create,
+  show,
 }
