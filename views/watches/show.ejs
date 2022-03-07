@@ -1,0 +1,27 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/public/stylesheets/watches/show.css">
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %> </h1>
+  <section>
+    <div>Brand: </div>
+    <div>
+      <%= watch.brand %> 
+    </div>
+    <div>Model: </div>
+    <div>
+      <%= watch.model %> 
+    </div>
+    <div>Type: </div>
+    <div>
+      <%= watch.type %>
+    </div>
+    <div>complications: </div>
+    <div>
+      <%= watch.complications %> 
+    </div>
+    <button type="submit">Add to Wishlist</button>
+    <button type="submit">Add to My Watches</button>
+  </section>
+</main>
