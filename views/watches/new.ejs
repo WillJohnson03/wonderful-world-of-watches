@@ -1,0 +1,24 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/public/stylesheets/watches/new.css">
+<%- include('../partials/nav') %>  
+
+<main>
+  <h1><%= title %></h1>
+  <form id="new-form" action="/watches" method="POST">
+    <label for="brand-input">Brand:</label>
+    <input type="text" name="brand" id="brand-input" />
+    <label for="model-input">Model:</label>
+    <input type="text" name="model" id="model-input" />
+    <label for="type-select">Type:</label>
+    <select name="type" id="type-select">
+      <option value="Analog">Analog</option>
+      <option value="Digital">Digital</option>
+      <option value="Smart">Smart</option>
+    </select>
+    <label for="complications-input">Complications</label>
+    <input type="text" name="complication" id="complications-input">
+    <button type="submit">Add Watch</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %> 
