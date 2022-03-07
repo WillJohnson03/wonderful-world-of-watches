@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema({
   avatar: String,
   //added this
   myWatches: [{ type: Schema.Types.ObjectId, ref: "Watch" }]
+  // added this
 }, {
   timestamps: true
 })

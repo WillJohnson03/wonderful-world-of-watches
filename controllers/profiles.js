@@ -37,6 +37,7 @@ function show(req, res) {
 function addToMyWatchList(req, res) {
   console.log('I own this timepiece')
 }
+// new function
 
 export {
   index,
