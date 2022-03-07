@@ -2,16 +2,33 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <% if (profile.avatar) { %>
-    <div>
-      <img 
-        class="profile-avatar"
-        src="<%= profile.avatar %>" 
-        alt="<%= profile.name %> avatar"
-      >
-    </div>
-  <% } %>
-  <h1>It's <%= isSelf ? "you" : profile.name %>!</h1>
+  <h1><%= title %> </h1>
+  <section>
+    <% if (profile.avatar) { %>
+      <div>
+        <img 
+          class="profile-avatar"
+          src="<%= profile.avatar %>" 
+          alt="<%= profile.name %> avatar"
+        >
+      </div>
+    <% } %>
+    <h1>It's <%= isSelf ? "you" : profile.name %>!</h1>
+  </section>
+  <!-- is new part -->
+  <form 
+  id="add-watch-to-my-watches"
+  action="/profiles/<%= watch._id %>/watches"
+  method="POST"
+  >
+    <select name="watchId">
+      <% watches.forEach(watch => { %>
+        <option value="<%= watch._id %>"><%= watch.brand + watch.model %> </option>
+        <% }) %> 
+    </select>
+    <button type="submit">Add to My Watches</button>
+  </form>
+  <!-- is new part -->
 </main>
 
 <%- include('../partials/footer') %>

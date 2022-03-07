@@ -9,6 +9,10 @@ router.get('/', isLoggedIn, profilesCtrl.index)
 // GET - localhost:3000/profiles/:id
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 
+//added new route here
+// POST - localhost:3000/profiles/:id/watches
+router.post('/:id', isLoggedIn, profilesCtrl.addToMyWatchList)
+
 export {
   router
 }
