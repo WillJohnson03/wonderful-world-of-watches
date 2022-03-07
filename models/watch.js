@@ -6,7 +6,7 @@ const watchSchema = new Schema({
   brand: {type: String, required: true},
   model: {type: String, required: true},
   type: {type:String, enum: ["Analog", "Digital", "Smart"]},
-  complications: {type: String, required: true},
+  complications: {type: String},
 }, {
   timestamps: true
 })

@@ -9,6 +9,9 @@ router.get('/', watchesCtrl.index)
 // GET - localhost/3000/watches/new
 router.get('/new', isLoggedIn, watchesCtrl.new)
 
+// POST - localhost/3000/watches
+router.post('/', isLoggedIn, watchesCtrl.create)
+
 export {
   router
 }

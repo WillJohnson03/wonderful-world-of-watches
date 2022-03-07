@@ -9,6 +9,7 @@ function index(req, res) {
     })
   })
   .catch(err => {
+    console.log("Index Error:", err)
     res.redirect('/watches')
   })
 }
@@ -19,7 +20,19 @@ function newWatch (req, res){
   })
 }
 
+function create(req, res) {
+  Watch.create(req.body)
+  .then(watch => {
+    res.redirect('/watches')
+  })
+  .catch(err => {
+    console.log("Create Error", err)
+    res.redirect('/watches')
+  })
+}
+
 export {
   index,
-  newWatch as new
+  newWatch as new,
+  create,
 }
