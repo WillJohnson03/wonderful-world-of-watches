@@ -44,9 +44,20 @@ function show(req, res) {
   })
 }
 
+function deleteWatch(req, res) {
+  Watch.findByIdAndDelete(req.params.id)
+  .then(() => {
+    res.redirect('/watches')
+  })
+  .catch(err => {
+    console.log('Delete Error ', err)
+  })
+}
+
 export {
   index,
   newWatch as new,
   create,
   show,
+  deleteWatch as delete,
 }

@@ -14,6 +14,9 @@ router.get('/:id', watchesCtrl.show)
 // POST - localhost/3000/watches
 router.post('/', isLoggedIn, watchesCtrl.create)
 
+// DELETE - localhost/3000/watches/:id
+router.delete('/:id', isLoggedIn, watchesCtrl.delete)
+
 export {
   router
 }

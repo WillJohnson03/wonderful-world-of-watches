@@ -2,7 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>Hello, <%= user ? user.profile.name : "friend" %></h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -11,6 +11,7 @@
       />
     </div>
   <% } %>
+  <p>Welcome to wonderful world of watches a website were you and your friends can share your watch obsessions.</p>
 </main>
 
 <%- include('./partials/footer') %>
