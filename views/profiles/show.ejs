@@ -14,21 +14,23 @@
       </div>
     <% } %>
     <h1>It's <%= isSelf ? "you" : profile.name %>!</h1>
+    <ul>
+      <% profile.myWatches.forEach(watch => { %> 
+        <li><%= watch.brand + watch.model %> </li>
+        <% }) %> 
+    </ul>
   </section>
-  <!-- is new part -->
   <form 
   id="add-watch-to-my-watches"
-  action="/profiles/<%= watch._id %>/watches"
+  action="/profiles/<%= profiles._id %>"
   method="POST"
   >
     <select name="watchId">
       <% watches.forEach(watch => { %>
-        <option value="<%= watch._id %>"><%= watch.brand + watch.model %> </option>
+        <option value="<%= watch._id %>"><%= watch.brand + watch.name %></option>
         <% }) %> 
     </select>
-    <button type="submit">Add to My Watches</button>
   </form>
-  <!-- is new part -->
 </main>
 
 <%- include('../partials/footer') %>
