@@ -5,13 +5,13 @@
 <main>
   <h1><%= title %> </h1>
   <section>
-    <form id="add-watch-to-my-watches" action="/profiles/<%= profile._id %>" method="POST">
       <div>Brand: <%= watch.brand %></div>
       <div>Model: <%= watch.model %></div>
       <div>Type: <%= watch.type %></div>
       <div>complications: <%= watch.complications %></div>
-      <button type="submit">Add to My Watches</button>
-    </form>
+      <a href="/watches/<%= watch._id %>/edit">
+        <button>Reconfigure Watch</button>
+      </a>
   </section>
 </main>
 

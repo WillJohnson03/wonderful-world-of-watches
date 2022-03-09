@@ -8,10 +8,6 @@ function index(req, res) {
       title: 'All Watches'
     })
   })
-  .catch(err => {
-    console.log("Index Error:", err)
-    res.redirect('/watches')
-  })
 }
 
 function newWatch (req, res){
@@ -25,10 +21,6 @@ function create(req, res) {
   .then(watch => {
     res.redirect('/watches')
   })
-  .catch(err => {
-    console.log("Create Error", err)
-    res.redirect('/watches')
-  })
 }
 
 function show(req, res) {
@@ -39,9 +31,6 @@ function show(req, res) {
       title: 'Watch Details'
     })
   })
-  .catch(err => {
-    console.log('Show Error', err)
-  })
 }
 
 function deleteWatch(req, res) {
@@ -49,8 +38,28 @@ function deleteWatch(req, res) {
   .then(() => {
     res.redirect('/watches')
   })
+}
+
+function edit(req, res) {
+  Watch.findById(req.params.id)
+  .then(watch => {
+    res.render('watches/edit', {
+      watch,
+      title: 'Edit Watch'
+    })
+  })
+}
+
+function update(req, res) {
+  Watch.findByIdAndUpdate(req.params.id)
+  .then(watch => {
+    watch.updateOne(req.body, {new: true})
+    .then(() => {
+      res.redirect(`/watches/${watch._id}`)
+    })
+  })
   .catch(err => {
-    console.log('Delete Error ', err)
+    console.log("Update Error: ", err)
   })
 }
 
@@ -60,4 +69,6 @@ export {
   create,
   show,
   deleteWatch as delete,
+  edit,
+  update,
 }
