@@ -32,7 +32,18 @@ function show(req, res) {
 
 // new function
 function addToMyWatchList(req, res) {
-  console.log('I own this timepiece')
+  Profile.findById(req.params.id)
+  .then(profile => {
+    profile.myWatches.push(req.body.watchId)
+    profile.save()
+    .then(() => {
+      res.redirect(`/profiles/${profile._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(`Add to my watches Error: `, err)
+    res.redirect('/')
+  })
 }
 // new function
 
