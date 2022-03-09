@@ -5,23 +5,14 @@
 <main>
   <h1><%= title %> </h1>
   <section>
-    <div>Brand: </div>
-    <div>
-      <%= watch.brand %> 
-    </div>
-    <div>Model: </div>
-    <div>
-      <%= watch.model %> 
-    </div>
-    <div>Type: </div>
-    <div>
-      <%= watch.type %>
-    </div>
-    <div>complications: </div>
-    <div>
-      <%= watch.complications %> 
-    </div>
-    <button type="submit">Add to Wishlist</button>
-    <button type="submit">Add to My Watches</button>
+    <form id="add-watch-to-my-watches" action="/profiles/<%= profile._id %>" method="POST">
+      <div>Brand: <%= watch.brand %></div>
+      <div>Model: <%= watch.model %></div>
+      <div>Type: <%= watch.type %></div>
+      <div>complications: <%= watch.complications %></div>
+      <button type="submit">Add to My Watches</button>
+    </form>
   </section>
 </main>
+
+<%- include('../partials/footer') %> 

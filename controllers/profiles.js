@@ -46,7 +46,6 @@ function addToMyWatchList(req, res) {
     res.redirect('/')
   })
 }
-// new function
 
 export {
   index,

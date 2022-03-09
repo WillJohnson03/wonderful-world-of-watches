@@ -15,7 +15,7 @@
     <% } %>
     <ul>
       <% profile.myWatches.forEach(watch => { %> 
-        <li><%= watch.brand + watch.model %> </li>
+        <li><a href="/watches/<%= watch._id %>"><%= watch.brand + watch.model %></a></li>
         <% }) %> 
     </ul>
   </section>
@@ -30,7 +30,6 @@
         <% }) %> 
     </select>
     <button type="submit">Add to My watches</button>
-    <button type="submit">Add to My wishlist</button>
   </form>
 </main>
 
