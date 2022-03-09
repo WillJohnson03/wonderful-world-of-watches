@@ -26,7 +26,7 @@
   >
     <select name="watchId">
       <% watches.forEach(watch => { %>
-        <option value="<%= watch._id %>"><%= watch.brand + watch.name %></option>
+        <option value="<%= watch._id %>"><%= `${watch.brand} ${watch.model}` %></option>
         <% }) %> 
     </select>
     <button type="submit">Add to My watches</button>

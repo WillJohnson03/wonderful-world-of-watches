@@ -18,7 +18,8 @@ function index(req, res) {
 function show(req, res) {
   Profile.findById(req.params.id)
   .populate('myWatches')
-  .exec(function(err, profile) {
+  .exec()
+  .then(profile => {
     Watch.find({_id: {$nin: profile.myWatches}}, function(err, watches) {
       res.render('profiles/show', {
         profile,
