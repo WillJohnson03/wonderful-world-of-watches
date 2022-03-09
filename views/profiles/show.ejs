@@ -13,7 +13,6 @@
         >
       </div>
     <% } %>
-    <h1>It's <%= isSelf ? "you" : profile.name %>!</h1>
     <ul>
       <% profile.myWatches.forEach(watch => { %> 
         <li><%= watch.brand + watch.model %> </li>
@@ -22,7 +21,7 @@
   </section>
   <form 
   id="add-watch-to-my-watches"
-  action="/profiles/<%= profiles._id %>"
+  action="/profiles/<%= profile._id %>"
   method="POST"
   >
     <select name="watchId">
@@ -30,6 +29,8 @@
         <option value="<%= watch._id %>"><%= watch.brand + watch.name %></option>
         <% }) %> 
     </select>
+    <button type="submit">Add to My watches</button>
+    <button type="submit">Add to My wishlist</button>
   </form>
 </main>
 

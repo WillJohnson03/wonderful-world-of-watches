@@ -18,24 +18,17 @@ function index(req, res) {
 function show(req, res) {
   Profile.findById(req.params.id)
   .populate('myWatches')
-  .then((profile) => {
-    Profile.findById(req.user.profile._id)
-    .then(self => {
-      const isSelf = self._id.equals(profile._id)
-      Watch.find({_id: {$nin: profile.watch}}, function(err, watches) {
-        res.render('profiles/show', {
-          profile,
-          title: `${profile.name}'s profile`,
-          watches,
-        })
+  .exec(function(err, profile) {
+    Watch.find({_id: {$nin: profile.myWatches}}, function(err, watches) {
+      res.render('profiles/show', {
+        profile,
+        title: `${profile.name}'s profile`,
+        watches,
       })
     })
   })
-  .catch((err) => {
-    console.log('P.Show Error: ', err)
-    res.redirect('/')
-  })
 }
+
 
 // new function
 function addToMyWatchList(req, res) {
