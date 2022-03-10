@@ -9,10 +9,6 @@ function index(req, res) {
       title: 'Profiles'
     })
   })
-  .catch(err => {
-    console.log("P.Index Error", err)
-    res.redirect(`/profiles/${req.user.profile._id}`)
-  })
 }
 
 function show(req, res) {
