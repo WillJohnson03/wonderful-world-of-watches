@@ -30,9 +30,9 @@ Wonderful World of Watches is a website for watch enthusiasts that lets them sha
 
 - ![MONGOOSE](https://img.shields.io/badge/-Mongoose-inactive?logo=MongoDB&logoColor=white&style=flat-square)
 
-- ![EJS](https://img.shields.io/badge/-EJS-inactive?logo=javascript&logoColor=white&style=flat-square)
+- ![EJS](https://img.shields.io/badge/-EJS-yellow?logo=javascript&logoColor=white&style=flat-square)
 
-- ![PASSPORT](https://img.shields.io/badge/-Passport-inactive?logo=passport&logoColor=white&style=flat-square)
+- ![PASSPORT](https://img.shields.io/badge/-Passport-black?logo=passport&logoColor=white&style=flat-square)
 
 
 ---
