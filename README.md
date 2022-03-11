@@ -31,7 +31,8 @@ Wonderful World of Watches is a website for watch enthusiasts that lets them sha
 
 ## Ice Box 🧊
 
+- [ ] Add functionallity to remove watches from your profile
 - [ ] Add Wishlist
-- [ ] Add specific images for the watches
 - [ ] Add comment section for each watch
+- [ ] Add specific images for the watches
 - [ ] Dark Mode
