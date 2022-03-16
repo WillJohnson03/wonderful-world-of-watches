@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
-  myWatches: [{ type: Schema.Types.ObjectId, ref: "Watch" }]
+  myWatches: [{ type: Schema.Types.ObjectId, ref: "Watch" }],
+  wishList: [{ type: Schema.Types.ObjectId, ref: "WishList"}]
 }, {
   timestamps: true
 })

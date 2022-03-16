@@ -8,3 +8,9 @@ const wishListSchema = new Schema({
 }, {
   timestamps: true
 })
+
+const WishList = mongoose.model('WishList', wishListSchema)
+
+export {
+  WishList
+}
