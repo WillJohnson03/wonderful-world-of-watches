@@ -2,11 +2,18 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const profileSchema = new mongoose.Schema({
+const wishListSchema = new Schema({
+  name: {type: String, required: true},
+  watches: [{ type: Schema.Types.ObjectId, ref: "Watch" }]
+}, {
+  timestamps: true
+})
+
+const profileSchema = new Schema({
   name: String,
   avatar: String,
   myWatches: [{ type: Schema.Types.ObjectId, ref: "Watch" }],
-  wishList: [{ type: Schema.Types.ObjectId, ref: "WishList"}]
+  wishList: [wishListSchema],
 }, {
   timestamps: true
 })
