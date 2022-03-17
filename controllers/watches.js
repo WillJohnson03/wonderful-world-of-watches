@@ -22,6 +22,10 @@ function create(req, res) {
   .then(watch => {
     res.redirect('/watches')
   })
+  .catch(err => {
+    console.log("Creat watch error: ", err)
+    res.redirect('/watches/new')
+  })
 }
 
 function show(req, res) {
