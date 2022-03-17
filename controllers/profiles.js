@@ -31,7 +31,6 @@ function show(req, res) {
 function addToMyWatchList(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
-    if (profile.owner)
     profile.myWatches.push(req.body.watchId)
     profile.save()
     .then(() => {
