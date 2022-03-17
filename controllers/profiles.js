@@ -26,8 +26,6 @@ function show(req, res) {
   })
 }
 
-
-// new function
 function addToMyWatchList(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
@@ -43,8 +41,24 @@ function addToMyWatchList(req, res) {
   })
 }
 
+function deletefromMyWatchList(req, res) {  
+  Profile.findById(req.user.profile._id)
+  .then(profile => {    
+    profile.myWatches.remove({_id: req.params.watchId})
+    profile.save()
+    .then(()=>{      
+      res.redirect(`/profiles/${profile._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(`Delete watches Error: `, err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   show,
   addToMyWatchList,
+  deletefromMyWatchList as delete,
 }

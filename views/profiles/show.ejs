@@ -4,29 +4,51 @@
 <main>
   <h1><%= title %> </h1>
   <section>
-        <img 
-          class="profile-avatar"
-          src="<%= profile.avatar %>" 
-          alt="<%= profile.name %> avatar"
-        >
-      </div>
+    <img 
+      class="profile-avatar"
+      src="<%= profile.avatar %>" 
+      alt="<%= profile.name %> avatar"
+    >
+    <!-- </div> -->
+    <table id="list">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Model</th>
+          <th></th>
+        </tr>
+      </thead>
+        <tbody>
+          <% profile.myWatches.forEach(watch => { %>
+            <tr>
+              <td><%= watch.brand %></td>
+              <td><%= watch.model %> </td>
+              <td><a href="/watches/<%= watch._id %>">DETAILS</a></td>
+              <% if () %> 
+              <td>                
+                <form 
+                  action="/profiles/<%= profile._id %>/watches/<%= watch._id %>?_method=DELETE" 
+                  method="POST"
+                >
+                <button type="submit">X</button>
+                  </form>
+              </td>
 
-    <ul>
-      <% profile.myWatches.forEach(watch => { %> 
-        <li><a href="/watches/<%= watch._id %>"><%= watch.brand + watch.model %></a></li>
-        <% }) %> 
-    </ul>
+            </tr>
+          <% }) %> 
+        </tbody>
+      </table>
   </section>
   <form 
   id="add-watch-to-my-watches"
-  action="/profiles/<%= profile._id %>"
+  action="/profiles/<%= profile._id %>/watches"
   method="POST"
   >
     <select name="watchId">
-      <% watches.forEach(watch => { %>
-        <option value="<%= watch._id %>"><%= `${watch.brand} ${watch.model}` %></option>
-        <% }) %> 
-    </select>
+        <% watches.forEach(watch => { %>
+          <option value="<%= watch._id %>"><%= `${watch.brand} ${watch.model}` %></option>
+          <% }) %> 
+      </select>
     <button type="submit">Add to My watches</button>
   </form>
 </main>
