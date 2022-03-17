@@ -4,15 +4,13 @@
 <main>
   <h1><%= title %> </h1>
   <section>
-    <% if (profile.avatar) { %>
-      <div>
         <img 
           class="profile-avatar"
           src="<%= profile.avatar %>" 
           alt="<%= profile.name %> avatar"
         >
       </div>
-    <% } %>
+
     <ul>
       <% profile.myWatches.forEach(watch => { %> 
         <li><a href="/watches/<%= watch._id %>"><%= watch.brand + watch.model %></a></li>

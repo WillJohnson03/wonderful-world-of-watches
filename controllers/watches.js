@@ -17,6 +17,7 @@ function newWatch (req, res){
 }
 
 function create(req, res) {
+  req.body.owner = req.user.profile._id
   Watch.create(req.body)
   .then(watch => {
     res.redirect('/watches')
@@ -25,6 +26,7 @@ function create(req, res) {
 
 function show(req, res) {
   Watch.findById(req.params.id)
+  .populate('owner')
   .then(watch => {
     res.render('watches/show', {
       watch,
@@ -34,9 +36,16 @@ function show(req, res) {
 }
 
 function deleteWatch(req, res) {
-  Watch.findByIdAndDelete(req.params.id)
-  .then(() => {
-    res.redirect('/watches')
+  Watch.findById(req.params.id)
+  .then(watch => {
+    if (watch.owner.equals(req.user.profile._id)) {
+      watch.delete()
+      .then(() => {
+        res.redirect('/watches')
+      })
+    } else {
+      throw new Error('Not Authorized')
+    }
   })
 }
 
@@ -51,15 +60,16 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  Watch.findByIdAndUpdate(req.params.id)
+  Watch.findById(req.params.id)
   .then(watch => {
-    watch.updateOne(req.body, {new: true})
-    .then(() => {
-      res.redirect(`/watches/${watch._id}`)
-    })
-  })
-  .catch(err => {
-    console.log("Update Error: ", err)
+    if (watch.owner.equals(req.user.profile._id)) {
+      watch.updateOne(req.body, {new: true})
+      .then(() => {
+        res.redirect(`/watches/${req.params.id}`)
+      })
+    } else {
+      throw new Error('Not Authourize')
+    }
   })
 }
 

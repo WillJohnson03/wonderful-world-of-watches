@@ -7,6 +7,7 @@ const watchSchema = new Schema({
   model: {type: String, required: true},
   type: {type:String, enum: ["Analog", "Digital", "Smart"]},
   complications: {type: String},
+  owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true
 })
