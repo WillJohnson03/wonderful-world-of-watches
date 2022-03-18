@@ -24,6 +24,10 @@ function show(req, res) {
       })
     })
   })
+  .catch(err => {
+    console.log('Profile Show Error: ', err)
+    res.redirect('profiles/show')
+  })
 }
 
 function addToMyWatchList(req, res) {
