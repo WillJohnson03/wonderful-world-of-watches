@@ -9,12 +9,12 @@
       src="<%= profile.avatar %>" 
       alt="<%= profile.name %> avatar"
     >
-    <!-- </div> -->
+    <% if (profile.myWatches.length) { %> 
     <table id="list">
       <thead>
         <tr>
-          <th>Brand</th>
-          <th>Model</th>
+          <th></th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -24,7 +24,7 @@
               <td><%= watch.brand %></td>
               <td><%= watch.model %> </td>
               <td><a href="/watches/<%= watch._id %>">DETAILS</a></td>
-              
+              <% if (profile.id === user.profile.id) { %> 
               <td>                
                 <form 
                   action="/profiles/<%= profile._id %>/watches/<%= watch._id %>?_method=DELETE" 
@@ -33,12 +33,16 @@
                 <button type="submit">X</button>
                   </form>
               </td>
-
+              <% } %> 
             </tr>
           <% }) %> 
         </tbody>
       </table>
+      <% } else { %>
+        <h3>This user has now watches.</h3>
+      <% } %>  
   </section>
+  <% if (profile.id === user.profile.id) { %> 
   <form 
   id="add-watch-to-my-watches"
   action="/profiles/<%= profile._id %>/watches"
@@ -51,6 +55,7 @@
       </select>
     <button type="submit">Add to My watches</button>
   </form>
+  <% } %> 
 </main>
 
 <%- include('../partials/footer') %>
