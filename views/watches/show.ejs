@@ -13,6 +13,54 @@
         <button>Reconfigure Watch</button>
       </a>
   </section>
+  <h2>Reviews</h2>
+  <form 
+    action="/watches/<%= watch._id %>/reviews"
+    id="add-review-form"
+    method="POST"
+  >
+    <label for="content-textarea">Review:</label>
+    <textarea name="content" id="content-textarea"></textarea>
+    <label for="rating-select">Rating:</label>
+    <select name="rating" id="rating-select">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <button type="submit">Add watch review</button>
+  </form>
+  <% if (watch.reviews.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Review</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let total = 0 %>
+        <% watch.reviews.forEach(function(review) { %>
+          <% total += review.rating %>
+          <tr>
+            <td><%= review.createdAt.toLocaleDateString() %></td>
+            <td><%= review.content %></td>
+            <td><%= review.rating %></td>
+          </tr>
+        <% }) %> 
+        <tr>
+          <td colspan="2"></td>
+          <td>
+            <strong><%= (total / watch.reviews.length).toFixed(1) %></strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>No Reviews Yet</h3>
+  <% } %>  
 </main>
 
 <%- include('../partials/footer') %> 

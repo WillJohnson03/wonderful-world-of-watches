@@ -77,6 +77,21 @@ function update(req, res) {
   })
 }
 
+function createReview(req, res) {
+  Watch.findById(req.params.id)
+  .then(watch => {
+    watch.reviews.push(req.body)
+    watch.save()
+    .then(() => {
+      res.redirect(`/watches/${watch._id}`)
+    })
+  })
+  .catch(err => {
+    console.log('Review Error: ', err)
+    res.redirect(`watches/${watch._id}`)
+  })
+}
+
 export {
   index,
   newWatch as new,
@@ -85,4 +100,5 @@ export {
   deleteWatch as delete,
   edit,
   update,
+  createReview,
 }
