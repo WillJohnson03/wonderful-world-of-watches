@@ -19,9 +19,11 @@
             <td><%= watch.model %> </td>
             <td><a href="/watches/<%= watch._id %>">DETAILS</a></td>
             <td>
+              <% if (watch.owner.equals(user?.profile._id)) { %> 
               <form action="/watches/<%= watch._id %>?_method=DELETE" method="POST">
                 <button>X</button>
               </form>
+              <% } %> 
             </td>
           </tr>
         <% }) %> 
