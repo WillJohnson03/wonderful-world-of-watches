@@ -14,13 +14,13 @@ function index(req, res) {
 function show(req, res) {
   Profile.findById(req.params.id)
   .populate('myWatches')
-  .exec()
   .then(profile => {
-    Watch.find({_id: {$nin: profile.myWatches}}, function(err, watches) {
+    Watch.find({_id: {$nin: profile.myWatches}})
+    .then(watches =>{
       res.render('profiles/show', {
-        profile,
         title: `${profile.name}'s profile`,
-        watches,
+        profile,
+        watches
       })
     })
   })
