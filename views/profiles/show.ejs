@@ -10,51 +10,51 @@
       alt="<%= profile.name %> avatar"
     >
     <% if (profile.myWatches.length) { %> 
-    <table id="list">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-        <tbody>
-          <% profile.myWatches.forEach(watch => { %>
-            <tr>
-              <td><%= watch.brand %></td>
-              <td><%= watch.model %> </td>
-              <td><a href="/watches/<%= watch._id %>">DETAILS</a></td>
-              <% if (profile.id === user.profile.id) { %> 
-              <td>                
-                <form 
-                  action="/profiles/<%= profile._id %>/watches/<%= watch._id %>?_method=DELETE" 
-                  method="POST"
-                >
-                <button type="submit">X</button>
-                  </form>
-              </td>
-              <% } %> 
-            </tr>
-          <% }) %> 
-        </tbody>
-      </table>
+      <table id="list">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+          <tbody>
+            <% profile.myWatches.forEach(watch => { %>
+              <tr>
+                <td><%= watch.brand %></td>
+                <td><%= watch.model %> </td>
+                <td><a href="/watches/<%= watch._id %>">DETAILS</a></td>
+                <% if (profile.id === user.profile.id) { %> 
+                  <td>                
+                    <form 
+                      action="/profiles/<%= profile._id %>/watches/<%= watch._id %>?_method=DELETE" 
+                      method="POST"
+                    >
+                    <button type="submit">X</button>
+                      </form>
+                  </td>
+                <% } %> 
+              </tr>
+            <% }) %> 
+          </tbody>
+        </table>
       <% } else { %>
         <h3>This user has now watches.</h3>
       <% } %>  
   </section>
   <% if (profile.id === user.profile.id) { %> 
-  <form 
-  id="add-watch-to-my-watches"
-  action="/profiles/<%= profile._id %>/watches"
-  method="POST"
-  >
-    <select name="watchId">
-        <% watches.forEach(watch => { %>
-          <option value="<%= watch._id %>"><%= `${watch.brand} ${watch.model}` %></option>
-          <% }) %> 
-      </select>
-    <button type="submit">Add to My watches</button>
-  </form>
+    <form 
+    id="add-watch-to-my-watches"
+    action="/profiles/<%= profile._id %>/watches"
+    method="POST"
+    >
+      <select name="watchId">
+          <% watches.forEach(watch => { %>
+            <option value="<%= watch._id %>"><%= `${watch.brand} ${watch.model}` %></option>
+            <% }) %> 
+        </select>
+      <button type="submit">Add to My watches</button>
+    </form>
   <% } %> 
 </main>
 
